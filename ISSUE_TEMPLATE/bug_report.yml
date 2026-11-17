@@ -1,0 +1,33 @@
+name: Bug report
+description: Something in an SDK does not work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Never include secret keys, cookies or customer data. Report vulnerabilities to security@leverprice.com instead.
+  - type: input
+    id: version
+    attributes:
+      label: SDK version
+      placeholder: "0.3.0"
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and framework
+      placeholder: "Node 22, Next.js 16"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, what happened instead, and the quote's `reason` if you have it.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: The smallest code that shows the problem.
