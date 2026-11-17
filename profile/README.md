@@ -31,7 +31,9 @@ import { Leverprice } from "@leverprice/sdk";
 
 const leverprice = new Leverprice({
   secretKey: process.env.LEVERPRICE_SECRET_KEY,
-  products: { pro: { currency: "usd", fallbackPrice: 1900, minPrice: 1500, maxPrice: 3900 } },
+  products: {
+    pro: { currency: "usd", fallbackPrice: 1900, minPrice: 1500, maxPrice: 3900 },
+  },
 });
 
 // 1. Where the price is shown
@@ -40,7 +42,10 @@ const quote = await leverprice.getPrice("pro", { request });
 // 2. At checkout, with your own provider keys
 await stripe.checkout.sessions.create({
   mode: "payment",
-  line_items: [{ quantity: 1, price_data: { currency: quote.currency, unit_amount: quote.price, product_data: { name: "Pro" } } }],
+  line_items: [{
+    quantity: 1,
+    price_data: { currency: quote.currency, unit_amount: quote.price, product_data: { name: "Pro" } },
+  }],
   metadata: quote.metadata,
   success_url,
   cancel_url,
